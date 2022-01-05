@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "operacje_io.h": "c",
+        "opwatki.h": "c",
+        "includy.h": "c",
+        "md5.h": "c"
+    }
+}
