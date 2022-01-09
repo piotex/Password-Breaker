@@ -1,0 +1,13 @@
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.csprojAssemblyReference.cache
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.AssemblyInfoInputs.cache
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.AssemblyInfo.cs
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.csproj.CoreCompileInputs.cache
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.exe
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.deps.json
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.runtimeconfig.json
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.runtimeconfig.dev.json
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.dll
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\bin\Debug\netcoreapp3.1\SCR_LamaczHasel.pdb
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.dll
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.pdb
+C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\SCR_LamaczHasel\obj\Debug\netcoreapp3.1\SCR_LamaczHasel.genruntimeconfig.cache

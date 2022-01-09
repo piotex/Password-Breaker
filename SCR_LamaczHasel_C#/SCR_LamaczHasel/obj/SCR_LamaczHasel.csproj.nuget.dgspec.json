@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pkubo\\Desktop\\Politechnika\\SCR_LamaczHasel\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj": {}
+    "C:\\Users\\pkubo\\Desktop\\Politechnika\\Password-Breaker\\SCR_LamaczHasel_C#\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pkubo\\Desktop\\Politechnika\\SCR_LamaczHasel\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj": {
+    "C:\\Users\\pkubo\\Desktop\\Politechnika\\Password-Breaker\\SCR_LamaczHasel_C#\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pkubo\\Desktop\\Politechnika\\SCR_LamaczHasel\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj",
+        "projectUniqueName": "C:\\Users\\pkubo\\Desktop\\Politechnika\\Password-Breaker\\SCR_LamaczHasel_C#\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj",
         "projectName": "SCR_LamaczHasel",
-        "projectPath": "C:\\Users\\pkubo\\Desktop\\Politechnika\\SCR_LamaczHasel\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj",
+        "projectPath": "C:\\Users\\pkubo\\Desktop\\Politechnika\\Password-Breaker\\SCR_LamaczHasel_C#\\SCR_LamaczHasel\\SCR_LamaczHasel.csproj",
         "packagesPath": "C:\\Users\\pkubo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pkubo\\Desktop\\Politechnika\\SCR_LamaczHasel\\SCR_LamaczHasel\\obj\\",
+        "outputPath": "C:\\Users\\pkubo\\Desktop\\Politechnika\\Password-Breaker\\SCR_LamaczHasel_C#\\SCR_LamaczHasel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pkubo\\AppData\\Roaming\\NuGet\\NuGet.Config",
