@@ -19,6 +19,7 @@ namespace SCR_LamaczHasel
         public static EventWaitHandle eventBreakedPassword = new EventWaitHandle(false, EventResetMode.AutoReset);
         public static EventWaitHandle eventModifiedFileData = new EventWaitHandle(false, EventResetMode.AutoReset);
 
+        public static readonly object _pwdChanging_locker = new object();
 
         public static void Main(string[] args)
         {

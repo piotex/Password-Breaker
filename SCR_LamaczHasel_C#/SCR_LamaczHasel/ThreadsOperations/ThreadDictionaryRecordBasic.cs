@@ -12,10 +12,11 @@ namespace SCR_LamaczHasel.ThreadsOperations
             SayThreadHello();
             Thread.Sleep(5000);
 
-            //lock
-            Program.BreakedPassword.Pwd = "todo";
-            WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
-            //free lock
+            lock (Program._pwdChanging_locker)
+            {
+                Program.BreakedPassword.Pwd = "todo 1";
+                WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
+            }
 
             for (int i = 0; true; i++)
             {
