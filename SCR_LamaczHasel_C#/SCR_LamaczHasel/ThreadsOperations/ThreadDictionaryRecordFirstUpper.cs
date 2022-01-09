@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace SCR_LamaczHasel.ThreadsOperations
 {
-    public class ThreadDictionaryRecordBasic : ThreadDictionary
+    public class ThreadDictionaryRecordFirstUpper : ThreadDictionary
     {
         public int DoSth(string data)
         {
@@ -13,7 +13,7 @@ namespace SCR_LamaczHasel.ThreadsOperations
             Thread.Sleep(5000);
 
             //lock
-            Program.BreakedPassword.Pwd = "todo";
+            Program.BreakedPassword.Pwd = "todo 2";
             WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
             //free lock
 
@@ -31,7 +31,7 @@ namespace SCR_LamaczHasel.ThreadsOperations
 
         protected override string GetThreadName()
         {
-            return "ThreadDictionaryRecordBasic";
+            return "ThreadDictionaryRecordFirstUpper";
         }
     }
 }

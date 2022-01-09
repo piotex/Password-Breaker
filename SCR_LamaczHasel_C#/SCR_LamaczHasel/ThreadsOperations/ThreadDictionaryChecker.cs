@@ -9,23 +9,22 @@ namespace SCR_LamaczHasel.ThreadsOperations
     {
         public int MarkBreakedPwds(string data)
         {
-            bool notDone = true;
-            Console.WriteLine("start -- MarkBreakedPwds -- ");
-            while (notDone)
+            SayThreadHello();
+            while (true)
             {
-                Program.ewh.WaitOne();
-                Console.WriteLine("# Crack the password:         {0} ", Program.BreakedPassword);
-                Program.clearCount.Set();
+                Program.eventBreakedPassword.WaitOne();
+                Console.WriteLine("# Crack the password:         {0} ", Program.BreakedPassword.Pwd);
+                Program.eventModifiedFileData.Set();
 
 
-                if (Program.TimeToDie)
-                {
-                    Interlocked.Increment(ref Program.DiedThreads);
-                    Console.WriteLine("-> END --- ThreadDictionaryChecker ");
+                if (ValidateEnd())
                     return 0;
-                }
             }
-            return 1;
+        }
+
+        protected override string GetThreadName()
+        {
+            return "ThreadDictionaryChecker";
         }
     }
 }
