@@ -10,7 +10,7 @@ namespace SCR_LamaczHasel
 {
     public class MainUtils
     {
-        public const int ThreadCount = 4;
+        public const int ThreadCount = 1+3+3+3;
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
@@ -18,9 +18,18 @@ namespace SCR_LamaczHasel
         public static void _init_threadList(ref Thread[] threadList)
         {
             threadList[0] = new Thread(() => new ThreadDictionaryChecker().MarkBreakedPwds(""));        //wywolanie pojedynczego watku - pojedynczej funkcji - jak sie wykona do konca, watek sie konczy
+            //------------------------------------------------------------------------------------------------------------------------------------------------------------
             threadList[1] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
             threadList[2] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
             threadList[3] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            //------------------------------------------------------------------------------------------------------------------------------------------------------------
+            threadList[4] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
+            threadList[5] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
+            threadList[6] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            //------------------------------------------------------------------------------------------------------------------------------------------------------------
+            threadList[7] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
+            threadList[8] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
+            threadList[9] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
 
 
             foreach (Thread thread in threadList)
