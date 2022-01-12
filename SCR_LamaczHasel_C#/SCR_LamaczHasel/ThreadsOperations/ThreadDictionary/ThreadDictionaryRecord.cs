@@ -8,7 +8,47 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
 {
     public abstract class ThreadDictionaryRecord 
     {
-        protected char[] _charsList = new char[34];
+        protected char[] _charsList = new char[44];
+        public abstract int BreakAllPasswords(PwdModify pwdModify);
+
+        
+        public ThreadDictionaryRecord()
+        {
+            addCharsToList();
+        }
+        protected virtual int GetPwdIndexInDb(string pwd)
+        {
+            for (int i = 0; i < Program.Passwords.Length; i++)
+            {
+                if (pwd.Equals(Program.Passwords[i].Pwd) && !Program.Passwords[i].Breaked)
+                    return i;
+            }
+            return -1;
+        }
+        protected bool ValidateEnd()
+        {
+            if (Program.TimeToDie)
+            {
+                Interlocked.Increment(ref Program.DiedThreads);
+                return true;
+            }
+            return false;
+        }
+        public virtual void ChangeBreakedPassword(string pwd)
+        {
+            string pwdMD5 = MainUtils.CreateMD5(pwd);
+            int index = GetPwdIndexInDb(pwdMD5);
+
+            if (index != -1)
+            {
+                lock (Program._pwdChanging_locker)
+                {
+                    Program.BreakedPassword.Index = index;
+                    Program.BreakedPassword.Pwd = pwd;
+                    WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
+                }
+            }
+        }
         protected virtual void addCharsToList()
         {
             int cc = 1;
@@ -32,42 +72,11 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
                 _charsList[cc] = (char)i;
                 cc++;
             }
-        }
-        public ThreadDictionaryRecord()
-        {
-            addCharsToList();
-        }
-        public abstract int BreakAllPasswords(PwdModify pwdModify);
-        protected virtual int GetPwdIndexInDb(string pwd)
-        {
-            for (int i = 0; i < Program.Passwords.Length; i++)
+            //-------------------------------------------------numbers
+            for (int i = 48; i <= 57; i++)
             {
-                if (pwd.Equals(Program.Passwords[i].Pwd) && !Program.Passwords[i].Breaked)
-                    return i;
-            }
-            return -1;
-        }
-        protected bool ValidateEnd()
-        {
-            if (Program.TimeToDie)
-            {
-                Interlocked.Increment(ref Program.DiedThreads);
-                return true;
-            }
-            return false;
-        }
-        public virtual void ChangeBreakedPassword(string pwd)
-        {
-            int index = GetPwdIndexInDb(pwd);
-
-            if (index != -1)
-            {
-                lock (Program._pwdChanging_locker)
-                {
-                    Program.BreakedPassword.Index = index;
-                    Program.BreakedPassword.Pwd = pwd;
-                    WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
-                }
+                _charsList[cc] = (char)i;
+                cc++;
             }
         }
     }

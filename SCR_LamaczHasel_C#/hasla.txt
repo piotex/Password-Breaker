@@ -19,3 +19,6 @@ PASSWORD*
 !password!!
 ##Password##
 )PASSWORD)
+!password!3
+#1Password#6
+)PASSWORD9

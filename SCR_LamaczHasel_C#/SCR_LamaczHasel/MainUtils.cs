@@ -4,6 +4,7 @@ using SCR_LamaczHasel.ThreadsOperations.PwdModif;
 using SCR_LamaczHasel.ThreadsOperations.ThreadDictionary;
 using System;
 using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace SCR_LamaczHasel
@@ -14,6 +15,7 @@ namespace SCR_LamaczHasel
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
+        private const string _path_pwdMD5 = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\haslaMD5.txt";
 
         public static void _init_threadList(ref Thread[] threadList)
         {
@@ -60,7 +62,8 @@ namespace SCR_LamaczHasel
         }
         public static void _set_Pwd()
         {
-            string[] tmp = File.ReadAllLines(_path_pwd);
+            //string[] tmp = File.ReadAllLines(_path_pwd);
+            string[] tmp = File.ReadAllLines(_path_pwdMD5);
             Program.Passwords = new PwdModel[tmp.Length];
 
             for (int i = 0; i < tmp.Length; i++)
@@ -117,6 +120,36 @@ namespace SCR_LamaczHasel
                         sw.WriteLine(pwd);
                     }
                 }
+            }
+        }
+        public static void MakeHashMD5PwdFile()
+        {
+            var tmp = File.ReadAllLines(_path_pwd);
+            File.Create(_path_pwdMD5).Close();
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                string pwd = tmp[i];
+                pwd = CreateMD5(pwd);
+                using (StreamWriter sw = File.AppendText(_path_pwdMD5))
+                {
+                    sw.WriteLine(pwd);
+                }
+            }
+        }
+        public static string CreateMD5(string pwd)
+        {
+            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
+            {
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pwd);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                // Convert the byte array to hexadecimal string
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));             //hexadecimat format
+                }
+                return sb.ToString();
             }
         }
     }

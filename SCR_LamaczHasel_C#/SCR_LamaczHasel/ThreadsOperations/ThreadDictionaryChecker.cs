@@ -27,9 +27,10 @@ namespace SCR_LamaczHasel.ThreadsOperations
                     return 0;
             }
         }
+        private static int _laizyCounter = 1;
         protected void MarkPwdInMemory()
         {
-            Console.WriteLine("# Crack the password: inx: {0}      {1}  ", Program.BreakedPassword.Index, Program.BreakedPassword.Pwd);
+            Console.WriteLine("#{2}# Crack the password: inx: {0}      {1}  ", Program.BreakedPassword.Index, Program.BreakedPassword.Pwd, _laizyCounter++);
             Program.Passwords[Program.BreakedPassword.Index].Breaked = true;          //Mark breaked password in memory
             using (StreamWriter sw = File.AppendText(_pathToBreaked))
             {

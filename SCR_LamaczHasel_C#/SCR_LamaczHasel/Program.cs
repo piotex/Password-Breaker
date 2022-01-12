@@ -24,6 +24,7 @@ namespace SCR_LamaczHasel
         public static void Main(string[] args)
         {
             //MainUtils.UpdateDictionaty();                                                 //function to cut wrong words from db/dictionary
+            //MainUtils.MakeHashMD5PwdFile();
             int i = 0;
             bool cont = true;
 
