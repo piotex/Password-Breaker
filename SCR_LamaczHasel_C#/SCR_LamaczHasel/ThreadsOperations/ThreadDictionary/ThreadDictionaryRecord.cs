@@ -9,12 +9,14 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
     public abstract class ThreadDictionaryRecord 
     {
         protected char[] _charsList = new char[44];
+        protected char[] _ALLcharsList = new char[95];
         public abstract int BreakAllPasswords(PwdModify pwdModify);
 
         
         public ThreadDictionaryRecord()
         {
             addCharsToList();
+            addALLCharsToList();
         }
         protected virtual int GetPwdIndexInDb(string pwd)
         {
@@ -76,6 +78,15 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
             for (int i = 48; i <= 57; i++)
             {
                 _charsList[cc] = (char)i;
+                cc++;
+            }
+        }
+        protected virtual void addALLCharsToList()
+        {
+            int cc = 1;
+            for (int i = 33; i <= 126; i++)          //without SPACE
+            {
+                _ALLcharsList[cc] = (char)i;
                 cc++;
             }
         }
