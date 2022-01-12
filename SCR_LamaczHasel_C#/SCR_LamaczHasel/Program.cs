@@ -14,7 +14,7 @@ namespace SCR_LamaczHasel
         public static string[] Dictionary;
         public static PwdModel[] Passwords;
 
-        public static PwdModel BreakedPassword = new PwdModel();
+        public static BreakedPwdModel BreakedPassword = new BreakedPwdModel();
 
         public static EventWaitHandle eventBreakedPassword = new EventWaitHandle(false, EventResetMode.AutoReset);
         public static EventWaitHandle eventModifiedFileData = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -23,6 +23,7 @@ namespace SCR_LamaczHasel
 
         public static void Main(string[] args)
         {
+            //MainUtils.UpdateDictionaty();                                                 //function to cut wrong words from db/dictionary
             int i = 0;
             bool cont = true;
 
@@ -55,13 +56,13 @@ X   3) wczytanie listy ze slownika do pamieci globalnej
 X   4) zabicie watkow ktore chodza
 X   5) odpalenie watkow
 //--------------SPRAWDZACZ--------------Watek czekajacy na sygnal ze zlamano haslo-----------------------------------------------------------
-1) oczekuj na sygnal o info ze haslo zostalo zlamane i jest w pamieci               <--- sing_Zlamano_Haslo <---
-2) po otrzymaniu sygnalu ze zlamano haslo: punkt 1.4.4 z 39 : oznacz wprowadzone haslo w pamieci
-2.0) naluz mutex na liste hasel w pamieci                              mutex_lista +                       //mozna wywalic            //to spowoduje dodatkowo wstrzymanie watkow ktore nie beda moglu pobierac nowych hasel
-2.1) zmien wartosc zlamanego hasla w liscie <--> HASLA <--> w pamieci
-2.2) wprowadx haslo do pliku
-2.2) zwolnij mutex                                                     mutex_lista -                       //mozna wywalic 
-3) wyslij sygnal ze skonczono grzebac w danych krytycznych                          ---> sign_KoniecGrzebaniaWPamieci --->
+X   1) oczekuj na sygnal o info ze haslo zostalo zlamane i jest w pamieci               <--- sing_Zlamano_Haslo <---
+X    2) po otrzymaniu sygnalu ze zlamano haslo: punkt 1.4.4 z 39 : oznacz wprowadzone haslo w pamieci
+---2.0) naluz mutex na liste hasel w pamieci                              mutex_lista +                       //mozna wywalic            //to spowoduje dodatkowo wstrzymanie watkow ktore nie beda moglu pobierac nowych hasel
+X   2.1) zmien wartosc zlamanego hasla w liscie <--> HASLA <--> w pamieci
+X   2.2) wprowadx haslo do pliku
+---2.2) zwolnij mutex                                                     mutex_lista -                       //mozna wywalic 
+X   3) wyslij sygnal ze skonczono grzebac w danych krytycznych                          ---> sign_KoniecGrzebaniaWPamieci --->
 //---------------------------------------Watek lamiacy proste hasla-----------------------------------------------------------
 1) dla kazdego hasla:
 1.1) nałuż sekcje krytyczną na liste haseł                              mutex_lista +                       //mozna wywalic 

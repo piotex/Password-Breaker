@@ -1,16 +1,16 @@
 ﻿using SCR_LamaczHasel.Pwd;
 using SCR_LamaczHasel.ThreadsOperations;
+using SCR_LamaczHasel.ThreadsOperations.PwdModif;
+using SCR_LamaczHasel.ThreadsOperations.ThreadDictionary;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 
 namespace SCR_LamaczHasel
 {
     public class MainUtils
     {
-        public const int ThreadCount = 3;
+        public const int ThreadCount = 4;
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
@@ -18,8 +18,9 @@ namespace SCR_LamaczHasel
         public static void _init_threadList(ref Thread[] threadList)
         {
             threadList[0] = new Thread(() => new ThreadDictionaryChecker().MarkBreakedPwds(""));        //wywolanie pojedynczego watku - pojedynczej funkcji - jak sie wykona do konca, watek sie konczy
-            threadList[1] = new Thread(() => new ThreadDictionaryRecordBasic().DoSth(""));
-            threadList[2] = new Thread(() => new ThreadDictionaryRecordFirstUpper().DoSth(""));
+            threadList[1] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
+            threadList[2] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
+            threadList[3] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
 
 
             foreach (Thread thread in threadList)
@@ -59,6 +60,35 @@ namespace SCR_LamaczHasel
             }
             Program.TimeToDie = false;
             Console.WriteLine("abort -- finish -----------------------------------------------------------");
+        }
+
+
+        private static bool containsUppercaseCharOrNumber(string pwd)
+        {
+            for (int i = 0; i < pwd.Length; i++)
+            {
+                if (pwd[i] >= 65 && pwd[i] <= 90)   //upercase char
+                    return true;
+                if (pwd[i] >= 48 && pwd[i] <= 57)   //number
+                    return true;
+            }
+            return false;
+        }
+        public static void UpdateDictionaty()
+        {
+            Program.Dictionary = File.ReadAllLines(_path_dic);
+            File.Create(_path_dic).Close();
+            for (int i = 0; i < Program.Dictionary.Length; i++)
+            {
+                string pwd = Program.Dictionary[i];
+                if (!containsUppercaseCharOrNumber(pwd))
+                {
+                    using (StreamWriter sw = File.AppendText(_path_dic))
+                    {
+                        sw.WriteLine(pwd);
+                    }
+                }
+            }
         }
     }
 }
