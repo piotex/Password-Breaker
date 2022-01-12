@@ -10,7 +10,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
     {
         protected char[] _charsList = new char[44];
         protected char[] _ALLcharsList = new char[95];
-        public abstract int BreakAllPasswords(PwdModify pwdModify);
+        public abstract int BreakAllPasswords(Func<string, string> ThreadModifyPwd);
 
         
         public ThreadDictionaryRecord()
@@ -38,7 +38,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
         }
         public virtual void ChangeBreakedPassword(string pwd)
         {
-            string pwdMD5 = MainUtils.CreateMD5(pwd);
+            string pwdMD5 = new MainUtils().CreateMD5(pwd);
             int index = GetPwdIndexInDb(pwdMD5);
 
             if (index != -1)

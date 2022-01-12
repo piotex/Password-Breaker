@@ -8,11 +8,11 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
 {
     public class ThreadDictionaryRecord_Normal : ThreadDictionaryRecord
     {
-        public override int BreakAllPasswords(PwdModify pwdModify)        
+        public override int BreakAllPasswords(Func<string, string> ThreadModifyPwd)        
         {
             for (int i = 0; i < Program.Dictionary.Length; i++)
             {
-                string pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);
+                string pwd = ThreadModifyPwd(Program.Dictionary[i]);
                 ChangeBreakedPassword(pwd);
                 if (ValidateEnd())
                     return 0;

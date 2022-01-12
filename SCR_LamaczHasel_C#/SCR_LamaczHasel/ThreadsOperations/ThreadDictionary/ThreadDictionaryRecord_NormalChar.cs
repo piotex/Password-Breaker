@@ -8,7 +8,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
 {
     public class ThreadDictionaryRecord_NormalChar : ThreadDictionaryRecord
     {
-        public override int BreakAllPasswords(PwdModify pwdModify)                     //Func<string, string> ThreadModifyPwd  ->  przekazuje tutaj funkcje modyfikujaca stringa jako parametr - delegaty
+        public override int BreakAllPasswords(Func<string, string> ThreadModifyPwd)                     //Func<string, string> ThreadModifyPwd  ->  przekazuje tutaj funkcje modyfikujaca stringa jako parametr - delegaty
         {
             for (int i = 0; i < Program.Dictionary.Length; i++)                         // TODO -> ask teacher how to modify it to recurention function with depth param!
             {
@@ -18,7 +18,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
                     {
                         for (int l = 0; l < _charsList.Length; l++)
                         {
-                            string pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);
+                            string pwd = ThreadModifyPwd(Program.Dictionary[i]);
                             if (_charsList[j] != '\0')
                                 pwd = String.Concat(pwd, _charsList[j]);
                             if (_charsList[k] != '\0')

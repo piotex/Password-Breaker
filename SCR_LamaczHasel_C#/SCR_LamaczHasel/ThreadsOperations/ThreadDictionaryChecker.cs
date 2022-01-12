@@ -37,7 +37,7 @@ namespace SCR_LamaczHasel.ThreadsOperations
                 sw.WriteLine(Program.BreakedPassword.Pwd);
             }
         }
-        public override int BreakAllPasswords(PwdModify pwdModify)
+        public override int BreakAllPasswords(Func<string, string> ThreadModifyPwd)
         {
             throw new NotImplementedException();
         }

@@ -7,10 +7,10 @@ namespace SCR_LamaczHasel.ThreadsOperations.PwdModif
 {
     public class ThreadDictionaryRecord_FirstUpper : PwdModify
     {
-        public override string GetThreadName()
-        {
-            return "ThreadDictionaryRecord_FirstUpper";
-        }
+        //public override string GetThreadName()
+        //{
+        //    return "ThreadDictionaryRecord_FirstUpper";
+        //}
         public override string ThreadModifyPwd(string pwd)
         {
             if (pwd == null)

@@ -23,22 +23,23 @@ namespace SCR_LamaczHasel
 
         public static void Main(string[] args)
         {
+            MainUtils mainUtils = new MainUtils();
             //MainUtils.UpdateDictionaty();                                                 //function to cut wrong words from db/dictionary
             //MainUtils.MakeHashMD5PwdFile();
             int i = 0;
             bool cont = true;
-
-            MainUtils._set_Pwd();
-
-            Thread[] threadList = new Thread[MainUtils.ThreadCount];
+            Thread[] threadList = new Thread[mainUtils.ThreadCount];
 
             while (cont)
             {
                 Console.WriteLine("Podaj scierzke do slownika: ");
-                MainUtils._set_Dic(Console.ReadLine());
-                if (i!=0)
-                    MainUtils._abort_threadList(ref threadList);
-                MainUtils._init_threadList(ref threadList);
+                string input = Console.ReadLine();
+                if (i != 0)
+                    mainUtils._abort_threadList(ref threadList);
+
+                mainUtils._set_Dic(input);
+                mainUtils._set_Pwd();
+                mainUtils._init_threadList(ref threadList);
                 i++;
                 Thread.Sleep(1000);
                 //break;

@@ -11,45 +11,46 @@ namespace SCR_LamaczHasel
 {
     public class MainUtils
     {
-        public const int ThreadCount = 23;
+        public int ThreadCount = 23;
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
         private const string _path_pwdMD5 = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\haslaMD5.txt";
 
-        public static void _init_threadList(ref Thread[] threadList)
+        public void _init_threadList(ref Thread[] threadList)
         {
+            //this block of code can start using dependency injection but for now its ok
             threadList[0] = new Thread(() => new ThreadDictionaryChecker().MarkBreakedPwds(""));        //wywolanie pojedynczego watku - pojedynczej funkcji - jak sie wykona do konca, watek sie konczy
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[1] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[2] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[3] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[1] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[2] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[3] = new Thread(() => new ThreadDictionaryRecord_Normal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[4] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[5] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[6] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[4] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[5] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[6] = new Thread(() => new ThreadDictionaryRecord_NormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[7] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[8] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[9] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[7] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[8] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[9] = new Thread(() => new ThreadDictionaryRecord_NumberNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[10] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[11] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[12] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[10] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[11] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[12] = new Thread(() => new ThreadDictionaryRecord_NumberNormalNumber().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[13] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[14] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[15] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[13] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[14] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[15] = new Thread(() => new ThreadDictionaryRecord_NormalChar().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[16] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[17] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[18] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[16] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[17] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[18] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[19] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
-            threadList[20] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
-            threadList[21] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            threadList[19] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
+            threadList[20] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper().ThreadModifyPwd));
+            threadList[21] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper().ThreadModifyPwd));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-            threadList[22] = new Thread(() => new ThreadDictionaryRecord_NormalALL().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
+            threadList[22] = new Thread(() => new ThreadDictionaryRecord_NormalALL().BreakAllPasswords(new ThreadDictionaryRecord_Basic().ThreadModifyPwd));
 
 
             foreach (Thread thread in threadList)
@@ -61,7 +62,7 @@ namespace SCR_LamaczHasel
                 }
             }
         }
-        public static void _set_Pwd()
+        public  void _set_Pwd()
         {
             //string[] tmp = File.ReadAllLines(_path_pwd);
             string[] tmp = File.ReadAllLines(_path_pwdMD5);
@@ -70,14 +71,14 @@ namespace SCR_LamaczHasel
             for (int i = 0; i < tmp.Length; i++)
                 Program.Passwords[i] = new PwdModel() { Pwd = tmp[i], Breaked = false };
         }
-        public static void _set_Dic(string input)
+        public void _set_Dic(string input)
         {
             if (input == "-")
                 Program.Dictionary = File.ReadAllLines(_path_dic);
             else
                 Program.Dictionary = File.ReadAllLines(input);
         }
-        public static void _abort_threadList(ref Thread[] threadList)
+        public void _abort_threadList(ref Thread[] threadList)
         {
             Program.TimeToDie = true;
             WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);          //wyslane w celu zatrzymania Checkera
@@ -96,7 +97,7 @@ namespace SCR_LamaczHasel
         }
 
 
-        private static bool containsUppercaseCharOrNumber(string pwd)
+        private bool containsUppercaseCharOrNumber(string pwd)
         {
             for (int i = 0; i < pwd.Length; i++)
             {
@@ -107,7 +108,7 @@ namespace SCR_LamaczHasel
             }
             return false;
         }
-        public static void UpdateDictionaty()
+        public void UpdateDictionaty()
         {
             Program.Dictionary = File.ReadAllLines(_path_dic);
             File.Create(_path_dic).Close();
@@ -123,7 +124,7 @@ namespace SCR_LamaczHasel
                 }
             }
         }
-        public static void MakeHashMD5PwdFile()
+        public void MakeHashMD5PwdFile()
         {
             var tmp = File.ReadAllLines(_path_pwd);
             File.Create(_path_pwdMD5).Close();
@@ -137,7 +138,7 @@ namespace SCR_LamaczHasel
                 }
             }
         }
-        public static string CreateMD5(string pwd)
+        public string CreateMD5(string pwd)
         {
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {

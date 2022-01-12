@@ -8,17 +8,18 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
 {
     public class ThreadDictionaryRecord_NumberNormal : ThreadDictionaryRecord
     {
-        public override int BreakAllPasswords(PwdModify pwdModify)                     //Func<string, string> ThreadModifyPwd  ->  przekazuje tutaj funkcje modyfikujaca stringa jako parametr - delegaty
+        public override int BreakAllPasswords(Func<string, string> ThreadModifyPwd)                     //Func<string, string> ThreadModifyPwd  ->  przekazuje tutaj funkcje modyfikujaca stringa jako parametr - delegaty
         {
+            int sizeOfTesting = 100000;                             //can be changed to ulong -> 18 446 744 073 709 551 615
             for (int i = 0; i < Program.Dictionary.Length; i++)
             {
-                for (int j = 0; j < 100000; j++)
+                for (int j = 0; j < sizeOfTesting; j++)
                 {
-                    string pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);                              //32pwd
+                    string pwd = ThreadModifyPwd(Program.Dictionary[i]);                              //32pwd
                     pwd = String.Concat(j, pwd);
                     ChangeBreakedPassword(pwd);
 
-                    pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);                                     //00032Pwd
+                    pwd = ThreadModifyPwd(Program.Dictionary[i]);                                     //00032Pwd
                     pwd = String.Concat(j, pwd);
                     ChangeBreakedPassword(pwd);
 
