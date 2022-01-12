@@ -19,9 +19,12 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
                         for (int l = 0; l < _charsList.Length; l++)
                         {
                             string pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);
-                            pwd = String.Concat(pwd, _charsList[j]);
-                            pwd = String.Concat(pwd, _charsList[k]);
-                            pwd = String.Concat(pwd, _charsList[l]);
+                            if (_charsList[j] != '\0')
+                                pwd = String.Concat(pwd, _charsList[j]);
+                            if (_charsList[k] != '\0')
+                                pwd = String.Concat(pwd, _charsList[k]);
+                            if (_charsList[l] != '\0')
+                                pwd = String.Concat(pwd, _charsList[l]);
                             ChangeBreakedPassword(pwd);
 
                             if (ValidateEnd())

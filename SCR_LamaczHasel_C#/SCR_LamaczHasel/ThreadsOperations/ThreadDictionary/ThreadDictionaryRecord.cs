@@ -59,6 +59,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
         public virtual void ChangeBreakedPassword(string pwd)
         {
             int index = GetPwdIndexInDb(pwd);
+
             if (index != -1)
             {
                 lock (Program._pwdChanging_locker)

@@ -10,7 +10,7 @@ namespace SCR_LamaczHasel
 {
     public class MainUtils
     {
-        public const int ThreadCount = 19;
+        public const int ThreadCount = 22;
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
@@ -43,12 +43,19 @@ namespace SCR_LamaczHasel
             threadList[17] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
             threadList[18] = new Thread(() => new ThreadDictionaryRecord_CharNormal().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
             //------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+            threadList[19] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_Basic()));
+            threadList[20] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_FirstUpper()));
+            threadList[21] = new Thread(() => new ThreadDictionaryRecord_CharNormalChar().BreakAllPasswords(new ThreadDictionaryRecord_AllUpper()));
+            //------------------------------------------------------------------------------------------------------------------------------------------------------------
+            
 
             foreach (Thread thread in threadList)
             {
                 if (thread != null)
+                {
                     thread.Start();
+                    Thread.Sleep(10);                                   //small delay added to make sure that each thread will operate on different pwd in the same time
+                }
             }
         }
         public static void _set_Pwd()
