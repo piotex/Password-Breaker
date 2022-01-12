@@ -13,7 +13,7 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
         {
             for (int i = 0; i < Program.Passwords.Length; i++)
             {
-                if (pwd.Equals(Program.Passwords[i].Pwd))
+                if (pwd.Equals(Program.Passwords[i].Pwd) && !Program.Passwords[i].Breaked)
                     return i;
             }
             return -1;

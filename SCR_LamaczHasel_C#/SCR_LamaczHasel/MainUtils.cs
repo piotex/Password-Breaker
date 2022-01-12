@@ -10,7 +10,7 @@ namespace SCR_LamaczHasel
 {
     public class MainUtils
     {
-        public const int ThreadCount = 1+3+3+3;
+        public const int ThreadCount = 10;
 
         private const string _path_dic = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\slownik.txt";
         private const string _path_pwd = @"C:\Users\pkubo\Desktop\Politechnika\Password-Breaker\SCR_LamaczHasel_C#\hasla.txt";
