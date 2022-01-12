@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
 {
-    public class ThreadDictionaryRecord_Normal : ThreadDictionaryRecord
+    public class ThreadDictionaryRecord_NormalALL : ThreadDictionaryRecord
     {
         public override int BreakAllPasswords(PwdModify pwdModify)        
         {

@@ -1,13 +1,13 @@
+PASSWORD
+password
+Password
 PASSWORD44
 password677
 Password555
 333password
 22Password
 1PASSWORD
-password
-Password
 Password**
-PASSWORD
 PASSWORD*
 --Password
 -PASSWORD
@@ -17,3 +17,6 @@ password***
 !password!!
 !password!3
 88Password88
+)PASSWORD)
+)PASSWORD9
+999password999
