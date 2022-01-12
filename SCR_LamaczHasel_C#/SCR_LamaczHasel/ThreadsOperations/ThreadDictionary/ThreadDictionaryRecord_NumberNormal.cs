@@ -14,28 +14,14 @@ namespace SCR_LamaczHasel.ThreadsOperations.ThreadDictionary
             {
                 for (int j = 0; j < 100000; j++)
                 {
-                    string pwd = pwdModify.ThreadModifyPwd(String.Concat(j,Program.Dictionary[i]));                              //32pwd
-                    int index = GetPwdIndexInDb(pwd);
-                    if (index != -1)
-                    {
-                        lock (Program._pwdChanging_locker)
-                        {
-                            Program.BreakedPassword.Index = index;
-                            Program.BreakedPassword.Pwd = pwd;
-                            WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
-                        }
-                    }
-                    pwd = pwdModify.ThreadModifyPwd(String.Concat(j.ToString("D" + 5),Program.Dictionary[i]));                   //00032pwd
-                    index = GetPwdIndexInDb(pwd);
-                    if (index != -1)
-                    {
-                        lock (Program._pwdChanging_locker)
-                        {
-                            Program.BreakedPassword.Index = index;
-                            Program.BreakedPassword.Pwd = pwd;
-                            WaitHandle.SignalAndWait(Program.eventBreakedPassword, Program.eventModifiedFileData);
-                        }
-                    }
+                    string pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);                              //32pwd
+                    pwd = String.Concat(j, pwd);
+                    ChangeBreakedPassword(pwd);
+
+                    pwd = pwdModify.ThreadModifyPwd(Program.Dictionary[i]);                                     //00032Pwd
+                    pwd = String.Concat(j, pwd);
+                    ChangeBreakedPassword(pwd);
+
                     if (ValidateEnd())
                         return 0;
                 }

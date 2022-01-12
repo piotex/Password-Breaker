@@ -7,3 +7,15 @@ PASSWORD4444
 3333password
 2222Password
 1111PASSWORD
+password***
+Password***
+PASSWORD***
+---password
+---Password
+---PASSWORD
+999password999
+888Password888
+777PASSWORD777
++++password+++
+///Password///
+)))PASSWORD)))
